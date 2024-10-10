@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "439185967390",
+    "project_id": "expense-tracker-6329a",
+    "storage_bucket": "expense-tracker-6329a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439185967390:android:799c0c1889fe885800e10f",
+        "android_client_info": {
+          "package_name": "com.example.centavo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Quzb304HFOoPu6x-JFhOiL7QdZDayq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
