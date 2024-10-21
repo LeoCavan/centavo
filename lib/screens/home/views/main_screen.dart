@@ -1,8 +1,10 @@
-import 'package:centavo/data/data.dart';
+import 'package:expense_repository/expense_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+  final List<Expense> expenses;
+  const MainScreen(this.expenses, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +157,7 @@ class MainScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 1.14,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      itemCount: myTransactionsData.length,
+                      itemCount: expenses.length,
                       itemBuilder: (BuildContext context, int i) {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16),
@@ -178,11 +180,16 @@ class MainScreen extends StatelessWidget {
                                             width: 50,
                                             height: 50,
                                             decoration: BoxDecoration(
-                                                color: myTransactionsData[i]
-                                                    ['color'],
+                                                color: Color(
+                                                    expenses[i].category.color),
                                                 shape: BoxShape.circle),
                                           ),
-                                          myTransactionsData[i]['icon'],
+                                          Image.asset(
+                                            'assets/${expenses[i].category.icon}.png',
+                                            scale: 15,
+                                            color: Colors.white,
+                                          )
+                                          // myTransactionsData[i]['icon'],
                                         ],
                                       ),
                                       const SizedBox(
@@ -193,7 +200,8 @@ class MainScreen extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            myTransactionsData[i]['date'],
+                                            DateFormat('dd/MM/yyyy')
+                                                .format(expenses[i].date),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 14,
@@ -202,7 +210,7 @@ class MainScreen extends StatelessWidget {
                                                     .outline),
                                           ),
                                           Text(
-                                            myTransactionsData[i]['name'],
+                                            expenses[i].category.name,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 20,
@@ -217,7 +225,7 @@ class MainScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        myTransactionsData[i]['totalAmount'],
+                                        "-${expenses[i].amount}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
